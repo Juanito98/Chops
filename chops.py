@@ -10,7 +10,13 @@ bot = commands.Bot(command_prefix='-chops ')
 
 @bot.command(name='saluda')
 async def saluda(ctx):
-    await ctx.send("Hola prro")
+    saludos = [
+        'Hola prro! :dog:',
+        'Kyc y deme comida :canned_food:',
+        'Tú no me mandas :angry:'
+    ]
+    response = random.choice(saludos)
+    await ctx.send(response)
 
 
 @bot.event
