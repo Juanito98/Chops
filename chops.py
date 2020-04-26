@@ -1,6 +1,7 @@
 import discord
 import random
 import asyncio
+import os
 from discord.ext import commands
 
 bot = discord.Client()
@@ -19,4 +20,4 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-bot.run('NzA0MDU0MDM3MTQxNjUxNTY2.XqXjeQ.Xjek8c2kUVD-TKbPfdL5YFzSYMo')
+bot.run(os.environ['DISCORD_TOKEN'])
