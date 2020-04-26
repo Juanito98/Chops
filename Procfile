@@ -1,1 +1,1 @@
-worker: chops.py
+worker: python chops.py
