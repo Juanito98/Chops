@@ -8,6 +8,24 @@ bot = discord.Client()
 
 bot = commands.Bot(command_prefix='-chops ')
 
+@bot.command(name='foto')
+async def foto(ctx):
+    files = [
+        'chops1.jpeg',
+        'chops2.jpeg',
+        'chops3.jpeg'
+    ]
+    mensajes = [
+        'Ten :3',
+        'Te quiero :heart:',
+        ''
+    ]
+    filename = random.choice(files)
+    msg = random.choice(mensajes)
+    filepath = "Resources/"+filename
+    file = discord.File(filepath, filename)
+    await ctx.send(msg, file=file)
+
 @bot.command(name='saluda')
 async def saluda(ctx):
     saludos = [
