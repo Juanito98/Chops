@@ -1,0 +1,32 @@
+{
+    "greetings" : [
+        "Hola {}! :v:",
+        "Kyc y deme comida :canned_food:",
+        "Tú no me mandas :angry:"
+    ],
+    "messages" : [
+        "Te quiero :heart:",
+        "Necesito un abrazo"
+    ],
+    "photos" : [
+        {
+            "filename" : "chops_sillon.jpeg",
+            "filepath" : "resources/chops1.jpeg"
+        },
+        {
+            "filename": "chops_pelon.jpeg",
+            "filepath": "resources/chops2.jpeg"
+        },
+        {
+            "filename": "chops_lorena.jpeg",
+            "filepath": "resources/chops3.jpeg"
+        }
+    ],
+    "emoji" : {
+        "heart" : "❤️",
+        "camera" : "📸",
+        "smiling" : "😊",
+        "sad" : "😔",
+        "angry" : "😡"
+    }
+}
