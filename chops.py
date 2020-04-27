@@ -37,7 +37,8 @@ def gif_response(emotion):
     return gif[0].url
 
 @bot.command(name='gif')
-async def gifCmd(ctx, msg=""):
+async def gifCmd(ctx, *, msg=""):
+    print(msg)
     if msg == "":
         gif = random_gif()
     else:
