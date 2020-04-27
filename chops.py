@@ -65,7 +65,7 @@ async def hiCmd(ctx):
 @bot.command(name='kick')
 async def kickCmd(ctx, *, member : discord.Member):
     await member.kick()
-    ctx.send(gif_response('kick'))
+    await ctx.send(gif_response('kick'))
 
 @bot.event
 async def on_ready():
