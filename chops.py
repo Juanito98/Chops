@@ -7,18 +7,18 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from giphy_client.rest import ApiException
 
+# Get credentials
 load_dotenv()
 discord_token = os.environ['DISCORD_TOKEN']
 giphy_token = os.environ['GIPHY_TOKEN']
 
-bot = discord.Client()
-giphy_api_instance = giphy_client.DefaultApi()
-
+# Define instances
 bot = commands.Bot(command_prefix='-chops ')
+giphy_api_instance = giphy_client.DefaultApi()
 
 def search_gifs(query):
     try:
-        return giphy_api_instance.gifs_search_get(giphy_token, query, limit=5, rating = 'g')
+        return giphy_api_instance.gifs_search_get(giphy_token, query, limit=8, rating = 'g')
     except ApiException as e:
         return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
 
@@ -42,7 +42,7 @@ async def gifCmd(ctx, msg=""):
     await ctx.send(gif)
 
 @bot.command(name='foto')
-async def fotoCmd(ctx):
+async def photoCmd(ctx):
     files = [
         'chops1.jpeg',
         'chops2.jpeg',
@@ -51,25 +51,33 @@ async def fotoCmd(ctx):
     mensajes = [
         'Ten :3',
         'Te quiero :heart:',
-        ''
     ]
     filename = random.choice(files)
     msg = random.choice(mensajes)
     filepath = "Resources/"+filename
     file = discord.File(filepath, filename)
+
+    await ctx.message.add_reaction('📸')
     await ctx.send(msg, file=file)
 
 @bot.command(name='saluda')
-async def saludaCmd(ctx):
+async def hiCmd(ctx):
+    sender = ctx.author.name
     saludos = [
-        'Hola prro! :dog:',
+        'Hola {}! :v:',
         'Kyc y deme comida :canned_food:',
         'Tú no me mandas :angry:',
     ]
-    saludo = random.choice(saludos)
+    saludo = random.choice(saludos).format(sender)
+
     await ctx.send(saludo)
     await ctx.send(gif_response(saludo))
 
+
+@bot.command(name='kick')
+async def kickCmd(ctx, *, member : discord.Member):
+    await member.kick()
+    ctx.send(gif_response('kick'))
 
 @bot.event
 async def on_ready():
