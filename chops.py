@@ -16,7 +16,7 @@ discord_token = os.environ['DISCORD_TOKEN']
 giphy_token = os.environ['GIPHY_TOKEN']
 
 # Define instances
-bot = commands.Bot(command_prefix='-chops ')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
 giphy_api_instance = giphy_client.DefaultApi()
 
 def random_gif():
@@ -66,6 +66,15 @@ async def hiCmd(ctx):
 async def kickCmd(ctx, *, member : discord.Member):
     await member.kick()
     await ctx.send(gif_response('kick'))
+
+@bot.event
+async def on_message(message):
+    if "te amo" in message.content.lower():
+        await message.add_reaction(config['emoji']['heart'])
+    if "chops" in message.content.lower():
+        await message.add_reaction(config['emoji']['chops'])
+
+    await bot.process_commands(message)
 
 @bot.event
 async def on_ready():
