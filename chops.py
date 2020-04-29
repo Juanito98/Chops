@@ -47,7 +47,7 @@ async def gifCmd(ctx, *, msg=""):
 @bot.command(name='foto')
 async def photoCmd(ctx):
     meta = random.choice(config['photos'])
-    msg = random.choice(config['messages'])
+    msg = random.choice(config['frases'])
     file = discord.File(meta['filepath'], meta['filename'])
 
     await ctx.message.add_reaction(config['emoji']['camera'])

@@ -4,7 +4,7 @@
         "Kyc y deme comida :canned_food:",
         "Tú no me mandas :angry:"
     ],
-    "messages" : [
+    "frases" : [
         "Te quiero :heart:",
         "Necesito un abrazo",
         "No hay mejor maestro que la experiencia más amarga de uno mismo.",
@@ -13,7 +13,13 @@
         "Cuando las oportunidades no llamen a tu puerta, construye una.",
         "Antes de hablar, piensa, pero antes de pensar, lee.",
         "La vida es una especie de bicicleta. Si quieres mantener el equilibrio, pedalea hacia delante.",
-        "Aprende de los errores de los demás. No vivirás bastante para cometerlos todos."
+        "Aprende de los errores de los demás. No vivirás bastante para cometerlos todos.",
+        "Tanto si piensas que puedes como si no, estarás en lo cierto.",
+        "El amigo de todos es amigo de nadie.",
+        "Si cuando estás solo, te sientes solo, no tienes buena compañía.",
+        "No tengas sueños, ten objetivos.",
+        "“Un amigo es aquel que llega cuando el mundo te abandona”",
+        "La amistad sin confianza es como una flor sin perfume"
     ],
     "photos" : [
         {
