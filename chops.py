@@ -7,6 +7,20 @@ import json
 from discord.ext import commands
 from dotenv import load_dotenv
 from giphy_client.rest import ApiException
+import matplotlib.pyplot as plt
+
+def get_random_plot():
+    x = [i for i in range(-10, 10)]
+    y = [random.randint(-10, 10) for i in range(-10, 10)]
+    plt.plot(x, y)
+    plt.ylabel('f(x)')
+    plt.xlabel('x')
+    plt.title('Gráfica')
+    filename = 'random_plot.png'
+    filepath = 'tmp/random_plot.png'
+    plt.savefig(filepath)
+    File = discord.File(filepath, filename)
+    return File
 
 config = json.load(open('config.json'))
 
@@ -18,6 +32,12 @@ giphy_token = os.environ['GIPHY_TOKEN']
 # Define instances
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
 giphy_api_instance = giphy_client.DefaultApi()
+
+@bot.command(name='plot')
+async def plotCmd(ctx):
+    plot = get_random_plot()
+    await ctx.send("", file=plot)
+    plot.close()
 
 def random_gif():
     response = giphy_api_instance.gifs_random_get(giphy_token)
@@ -52,6 +72,7 @@ async def photoCmd(ctx):
 
     await ctx.message.add_reaction(config['emoji']['camera'])
     await ctx.send(msg, file=file)
+    file.close()
 
 @bot.command(name='saluda')
 async def hiCmd(ctx):
