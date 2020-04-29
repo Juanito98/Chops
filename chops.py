@@ -32,14 +32,15 @@ def get_random_plot():
     filename = 'random_plot.png'
     filepath = 'tmp/random_plot.png'
     plt.savefig(filepath)
+    plt.close()
     File = discord.File(filepath, filename)
     return File
 
 @bot.command(name='plot')
 async def plotCmd(ctx):
-    plot = get_random_plot()
-    await ctx.send("", file=plot)
-    plot.close()
+    file = get_random_plot()
+    await ctx.send("", file=file)
+    file.close()
 
 def random_gif():
     response = giphy_api_instance.gifs_random_get(giphy_token)
