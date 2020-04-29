@@ -9,6 +9,19 @@ from dotenv import load_dotenv
 from giphy_client.rest import ApiException
 import matplotlib.pyplot as plt
 
+
+config = json.load(open('config.json'))
+
+# Get credentials
+load_dotenv()
+discord_token = os.environ['DISCORD_TOKEN']
+giphy_token = os.environ['GIPHY_TOKEN']
+
+# Define instances
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
+giphy_api_instance = giphy_client.DefaultApi()
+
+
 def get_random_plot():
     x = [i for i in range(-10, 10)]
     y = [random.randint(-10, 10) for i in range(-10, 10)]
@@ -21,17 +34,6 @@ def get_random_plot():
     plt.savefig(filepath)
     File = discord.File(filepath, filename)
     return File
-
-config = json.load(open('config.json'))
-
-# Get credentials
-load_dotenv()
-discord_token = os.environ['DISCORD_TOKEN']
-giphy_token = os.environ['GIPHY_TOKEN']
-
-# Define instances
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
-giphy_api_instance = giphy_client.DefaultApi()
 
 @bot.command(name='plot')
 async def plotCmd(ctx):
