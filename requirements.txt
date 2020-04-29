@@ -1,3 +1,4 @@
 discord
 python-dotenv
-giphy_client 
+giphy_client
+matplotlib
