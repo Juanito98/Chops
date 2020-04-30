@@ -42,7 +42,6 @@ def get_plot(msg):
 async def plotCmd(ctx, *, msg="sin(x)"):
     file = get_plot(msg)
     await ctx.send("", file=file)
-    file.close()
 
 def random_gif():
     response = giphy_api_instance.gifs_random_get(giphy_token)
@@ -77,7 +76,6 @@ async def photoCmd(ctx):
 
     await ctx.message.add_reaction(config['emoji']['camera'])
     await ctx.send(msg, file=file)
-    file.close()
 
 @bot.command(name='saluda')
 async def hiCmd(ctx):
