@@ -2,5 +2,3 @@ discord
 python-dotenv
 giphy_client
 matplotlib
-numpy
-math
