@@ -4,10 +4,12 @@ import asyncio
 import os
 import giphy_client
 import json
+import numpy
 from discord.ext import commands
 from dotenv import load_dotenv
 from giphy_client.rest import ApiException
 import matplotlib.pyplot as plt
+from math import exp, sin, cos
 
 
 config = json.load(open('config.json'))
@@ -22,10 +24,10 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
 giphy_api_instance = giphy_client.DefaultApi()
 
 
-def get_random_plot():
-    x = [i for i in range(-10, 10)]
-    y = [random.randint(-10, 10) for i in range(-10, 10)]
-    plt.plot(x, y)
+def get_plot(msg):
+    t = numpy.linspace(-10, 10, num=100)
+    y = eval('[{} for x in t]'.format(msg))
+    plt.plot(t, y)
     plt.ylabel('f(x)')
     plt.xlabel('x')
     plt.title('Gráfica')
@@ -37,8 +39,8 @@ def get_random_plot():
     return File
 
 @bot.command(name='plot')
-async def plotCmd(ctx):
-    file = get_random_plot()
+async def plotCmd(ctx, *, msg="sin(x)"):
+    file = get_plot(msg)
     await ctx.send("", file=file)
     file.close()
 
