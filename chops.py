@@ -28,7 +28,7 @@ def get_plot(msg):
     t = numpy.linspace(-10, 10, num=100)
     y = eval('[{} for x in t]'.format(msg))
     plt.plot(t, y)
-    plt.ylabel('f(x)')
+    plt.ylabel('f(x) = {}'.format(msg))
     plt.xlabel('x')
     plt.title('Gráfica')
     filename = 'random_plot.png'
