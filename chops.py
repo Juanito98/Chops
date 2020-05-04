@@ -9,7 +9,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from giphy_client.rest import ApiException
 import matplotlib.pyplot as plt
-from math import exp, sin, cos
+from math import exp, sin, cos, pi, log as ln
 
 
 config = json.load(open('config.json'))
