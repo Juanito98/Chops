@@ -23,6 +23,9 @@ giphy_token = os.environ['GIPHY_TOKEN']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('-chops ', '-'))
 giphy_api_instance = giphy_client.DefaultApi()
 
+@bot.command(name='volado')
+async def tossUpCmd(ctx):
+    await ctx.send(random.choice(["Águila", "Sol"]))
 
 def get_plot(msg):
     t = numpy.linspace(-10, 10, num=100)
